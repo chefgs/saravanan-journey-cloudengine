@@ -3,7 +3,7 @@ import "./globals.css";
 import { JourneyProvider } from "@/context/JourneyContext";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://cloudenginelabs.com"),
+  metadataBase: new URL("https://gsaravanan-journey.vercel.app"),
   title: "From a Humble Student to Founder | Saravanan Gnanaguru",
   description:
     "A 25-year journey from a humble engineering student to software professional and founder of CloudEngine Labs — shaped by perseverance, continuous learning, gratitude, and self-employment.",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     title: "From a Humble Student to Founder | Saravanan Gnanaguru",
     description:
       "A 25-year journey of perseverance, continuous learning, survival, gratitude, and self-employment.",
-    url: "https://cloudenginelabs.com/journey",
+    url: "https://gsaravanan-journey.vercel.app",
     siteName: "Saravanan Gnanaguru — 25-Year Journey",
     images: [
       {

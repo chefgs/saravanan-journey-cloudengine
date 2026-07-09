@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { QRCodeSVG } from 'qrcode.react';
 import { X, Share2, Copy, Check, Send, Sparkles } from 'lucide-react';
 import { LinkedInIcon } from '@/components/icons/LinkedInIcon';
@@ -11,14 +11,8 @@ interface AlumniQRModalProps {
 }
 
 export default function AlumniQRModal({ isOpen, onClose }: AlumniQRModalProps) {
-  const [currentUrl, setCurrentUrl] = useState<string>('https://cloudenginelabs.com/journey');
+  const currentUrl = 'https://gsaravanan-journey.vercel.app';
   const [copied, setCopied] = useState(false);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setCurrentUrl(window.location.href);
-    }
-  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -66,15 +60,15 @@ export default function AlumniQRModal({ isOpen, onClose }: AlumniQRModalProps) {
           <div className="p-5 rounded-2xl bg-white shadow-xl flex flex-col items-center">
             <QRCodeSVG
               value={currentUrl}
-              size={180}
+              size={200}
               level="H"
               includeMargin={true}
               imageSettings={{
-                src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&auto=format&fit=crop",
+                src: "/saravanan-qr-center.png",
                 x: undefined,
                 y: undefined,
-                height: 34,
-                width: 34,
+                height: 46,
+                width: 46,
                 excavate: true
               }}
             />
