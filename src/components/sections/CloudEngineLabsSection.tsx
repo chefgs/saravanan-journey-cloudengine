@@ -122,18 +122,10 @@ export default function CloudEngineLabsSection() {
               href="https://cloudenginelabs.io"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-cyan-accent text-navy-deep font-semibold text-xs sm:text-sm hover:bg-cyan-400 shadow-lg shadow-cyan-accent/20 transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-cyan-accent border border-[#0A66C2]/50 text-navy-deep font-semibold text-xs sm:text-sm hover:bg-cyan-400 shadow-lg shadow-cyan-accent/20 transition-all"
             >
               <span>Visit Website</span>
               <ExternalLink className="w-4 h-4" />
-            </a>
-
-            <a
-              href="#gallery"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-[#0A1128] border border-slate-700 text-white font-semibold text-xs sm:text-sm hover:bg-slate-800 transition-all"
-            >
-              <span>View My Work</span>
-              <ArrowRight className="w-4 h-4" />
             </a>
 
             <a
