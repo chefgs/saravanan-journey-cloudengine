@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# From a Humble Student to Building Something of My Own
 
-## Getting Started
+## A 25-Year Personal Milestone & CloudEngine Labs Landing Page (2001–2026)
 
-First, run the development server:
+Built for **Saravanan Gnanaguru**, Founder of **CloudEngine Labs**, marking 25 years since completing Bachelor of Engineering (Amrita Institute of Technology, Batch of 2001) and completing 3 years of self-employment in 2026.
+
+---
+
+## 🌟 Key Features
+
+1. **Stunning Editorial Storytelling**: Full-width visual hero, dignified typography (`Playfair Display` + `Inter`), and warm editorial spacing.
+2. **Interactive 25-Year Timeline**: Filterable chronological journey covering Amrita 2001, SSN lab assistant days, Wipro 2005 entry, 18 years in enterprise architecture, and founding CloudEngine Labs.
+3. **Curated Visual Life Archive**: Masonry gallery across 11 life categories with lightbox story view.
+4. **Holistic Wheel of Life Chart**: Interactive SVG radar visualization referencing the **21DC Goal Progression System** and **TiE Chennai Wheel of Life**.
+5. **Restrained Gratitude Section**: Deeply appreciative tributes to family, mentors (`Raghavan sir`, Wipro opportunity provider), colleagues, and clients.
+6. **Alumni Event QR Code Modal**: Instant QR code generator for sharing at the 2026 Amrita Silver Jubilee gathering.
+7. **Live Admin Content Management System (CMS)**:
+   - Secure PIN login (Default PIN: `2026` or `2001`)
+   - Add, edit, delete, and reorder milestones and gallery photos
+   - Full JSON Export / Import (`saravanan_journey_2026.json`)
+   - **Printable Silver Jubilee Booklet View**: Clean print-friendly document for saving to PDF or physical printing.
+8. **Dual Storage Architecture**:
+   - Works **100% out of the box locally** using pre-seeded data + browser persistence.
+   - Ready for **Supabase Postgres + Storage + RLS** cloud sync (`supabase/schema.sql`).
+
+---
+
+## 🚀 Local Development Setup
 
 ```bash
+# 1. Navigate to the project directory
+cd saravanan-journey-cloudengine
+
+# 2. Install dependencies
+npm install
+
+# 3. Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🔐 Admin Mode & CMS Usage
 
-## Learn More
+1. Click **"Admin Mode"** in the top navigation bar or footer.
+2. Enter PIN **`2026`** (Jubilee Year) or **`2001`** (Graduation Year).
+3. Use the tabs to:
+   - Add new milestones to the timeline.
+   - Upload or register new photos in the archive.
+   - Edit hero headlines.
+   - Export full JSON backup or restore from file.
+   - Open the **Printable Booklet PDF View**.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ☁️ Supabase Cloud Deployment (Optional)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+To connect a live Supabase database:
+1. Run the script located at `supabase/schema.sql` in your Supabase SQL editor.
+2. Create `.env.local` copying values from `.env.example`:
+   ```env
+   NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+   ```
+3. Deploy to **Vercel** with zero configuration required.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📜 License & Copyright
+© 2026 Saravanan Gnanaguru. Founder, CloudEngine Labs. All rights reserved.
