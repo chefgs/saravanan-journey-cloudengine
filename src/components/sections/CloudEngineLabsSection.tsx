@@ -119,7 +119,7 @@ export default function CloudEngineLabsSection() {
 
           <div className="flex flex-wrap items-center gap-3">
             <a
-              href="https://cloudenginelabs.com"
+              href="https://cloudenginelabs.io"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-cyan-accent text-navy-deep font-semibold text-xs sm:text-sm hover:bg-cyan-400 shadow-lg shadow-cyan-accent/20 transition-all"
@@ -137,7 +137,7 @@ export default function CloudEngineLabsSection() {
             </a>
 
             <a
-              href="https://www.linkedin.com/in/saravanangnanaguru/"
+              href="https://www.linkedin.com/in/saravanan-gnanaguru/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-[#0A66C2]/20 border border-[#0A66C2]/50 text-sky-300 font-semibold text-xs sm:text-sm hover:bg-[#0A66C2]/30 transition-all"

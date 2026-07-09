@@ -63,15 +63,15 @@ export default function RootLayout({
       "@type": "CollegeOrUniversity",
       name: "Amrita Institute of Technology, Ettimadai"
     },
-    url: "https://cloudenginelabs.com",
-    sameAs: ["https://www.linkedin.com/in/saravanangnanaguru/"]
+    url: "https://cloudenginelabs.io",
+    sameAs: ["https://www.linkedin.com/in/saravanan-gnanaguru/"]
   };
 
   const structuredDataOrg = {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "CloudEngine Labs",
-    url: "https://cloudenginelabs.com",
+    url: "https://cloudenginelabs.io",
     logo: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=400&auto=format&fit=crop",
     description:
       "A process-first technology consulting company helping software product teams build and scale secure, reliable, and maintainable applications.",

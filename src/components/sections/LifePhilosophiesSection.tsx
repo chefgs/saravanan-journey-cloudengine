@@ -273,46 +273,46 @@ export default function LifePhilosophiesSection() {
             <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white">
               15 Core Principles Linked to My Journey
             </h3>
-            <p className="text-sm text-slate-400 mt-2">
-              Select a category below to explore the real-life beliefs and practical habits behind every milestone.
+            <p className="text-sm text-slate-300 mt-2">
+              Select any of the <span className="text-cyan-accent font-semibold">3 core themes</span> below to explore the beliefs and habits behind every milestone:
             </p>
           </div>
 
-          {/* Pillar Tabs */}
-          <div className="flex flex-wrap items-center justify-center gap-3 mb-10">
+          {/* Pillar Tabs (3 Highly Visible Interactive Buttons) */}
+          <div className="flex flex-wrap items-center justify-center gap-4 mb-10">
             <button
               onClick={() => setActiveTab('pillar1')}
-              className={`px-5 py-3 rounded-2xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 ${
+              className={`px-6 py-3.5 rounded-2xl text-xs sm:text-sm font-bold transition-all duration-300 flex items-center gap-2.5 shadow-lg ${
                 activeTab === 'pillar1'
-                  ? 'bg-cyan-accent text-navy-deep shadow-lg shadow-cyan-accent/20 scale-105'
-                  : 'bg-navy-card text-slate-300 border border-slate-800 hover:border-slate-700'
+                  ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-blue-500/30 scale-105 ring-2 ring-white'
+                  : 'bg-[#141E3A] text-blue-200 border-2 border-blue-500/50 hover:border-blue-400 hover:bg-blue-600/20 hover:text-white hover:scale-[1.02]'
               }`}
             >
-              <ShieldCheck className="w-4 h-4" />
+              <ShieldCheck className="w-4 h-4 shrink-0" />
               <span>I. Inner Strength & Survival (01–05)</span>
             </button>
 
             <button
               onClick={() => setActiveTab('pillar2')}
-              className={`px-5 py-3 rounded-2xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 ${
+              className={`px-6 py-3.5 rounded-2xl text-xs sm:text-sm font-bold transition-all duration-300 flex items-center gap-2.5 shadow-lg ${
                 activeTab === 'pillar2'
-                  ? 'bg-amber-400 text-navy-deep shadow-lg shadow-amber-400/20 scale-105'
-                  : 'bg-navy-card text-slate-300 border border-slate-800 hover:border-slate-700'
+                  ? 'bg-gradient-to-r from-amber-400 to-amber-300 text-navy-deep shadow-amber-400/30 scale-105 ring-2 ring-white'
+                  : 'bg-[#291F13] text-amber-300 border-2 border-amber-400/50 hover:border-amber-300 hover:bg-amber-400/20 hover:text-white hover:scale-[1.02]'
               }`}
             >
-              <Flame className="w-4 h-4" />
+              <Flame className="w-4 h-4 shrink-0" />
               <span>II. Freedom & Purpose (06–10)</span>
             </button>
 
             <button
               onClick={() => setActiveTab('pillar3')}
-              className={`px-5 py-3 rounded-2xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 ${
+              className={`px-6 py-3.5 rounded-2xl text-xs sm:text-sm font-bold transition-all duration-300 flex items-center gap-2.5 shadow-lg ${
                 activeTab === 'pillar3'
-                  ? 'bg-emerald-400 text-navy-deep shadow-lg shadow-emerald-400/20 scale-105'
-                  : 'bg-navy-card text-slate-300 border border-slate-800 hover:border-slate-700'
+                  ? 'bg-gradient-to-r from-emerald-400 to-emerald-300 text-navy-deep shadow-emerald-400/30 scale-105 ring-2 ring-white'
+                  : 'bg-[#102B27] text-emerald-300 border-2 border-emerald-400/50 hover:border-emerald-300 hover:bg-emerald-400/20 hover:text-white hover:scale-[1.02]'
               }`}
             >
-              <Heart className="w-4 h-4" />
+              <Heart className="w-4 h-4 shrink-0" />
               <span>III. Cellular Health & Gratitude (11–15)</span>
             </button>
           </div>

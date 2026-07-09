@@ -44,7 +44,7 @@ export default function FooterSection() {
           {/* Quick Links Column */}
           <div className="md:col-span-4 flex flex-wrap items-center gap-6 text-xs font-semibold text-slate-300">
             <a
-              href="https://cloudenginelabs.com"
+              href="https://cloudenginelabs.io"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-white/95 px-3 py-1.5 rounded-lg hover:scale-105 transition-all shadow-md"
@@ -54,7 +54,7 @@ export default function FooterSection() {
             </a>
 
             <a
-              href="https://www.linkedin.com/in/saravanangnanaguru/"
+              href="https://www.linkedin.com/in/saravanan-gnanaguru/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 hover:text-cyan-accent transition-colors"
