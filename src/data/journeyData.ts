@@ -44,7 +44,7 @@ export const INITIAL_JOURNEY_DATA: JourneyContent = {
       title: "Engineering Years",
       subtitle: "Amrita Institute of Technology, Ettimadai",
       description:
-        "Studied Electrical & Electronics / Engineering at Amrita Institute of Technology, Ettimadai, Coimbatore. Completed my Bachelor of Engineering in 2001. While I was average academically, I completed the degree with first class through sustained daily effort, driven by a deep desire to honor my family's sacrifices.",
+        "Studied Electronics and Communications Engineering at Amrita Institute of Technology, Ettimadai, Coimbatore. Completed my Bachelor of Engineering in 2001. While I was average academically, I completed the degree with first class through sustained daily effort, driven by a deep desire to honor my family's sacrifices.",
       location: "Coimbatore, Tamil Nadu",
       organization: "Amrita Institute of Technology",
       category: "education",
