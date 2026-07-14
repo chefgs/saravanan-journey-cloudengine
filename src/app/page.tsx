@@ -35,17 +35,17 @@ export default function Home() {
       {/* 5. Life Philosophies & Lessons Learned */}
       <LifePhilosophiesSection />
 
-      {/* 7. Holistic Life Wheel (21DC & TiE Chennai Framework) */}
+      {/* 6. Holistic Life Wheel (21DC & TiE Chennai Framework) */}
       <HolisticLifeWheelSection />
 
       {/* 7. Gratitude Section */}
       <GratitudeSection />
 
-      {/* 8. CloudEngine Labs Consulting Showcase */}
-      <CloudEngineLabsSection />
-
-      {/* 9. Final Message & Silver Jubilee Creed */}
+      {/* 8. Final Message & Silver Jubilee Creed */}
       <FinalMessageSection />
+
+      {/* 9. CloudEngine Labs Consulting Showcase */}
+      <CloudEngineLabsSection />
 
       {/* 10. Connect & Reach Out Section */}
       <ContactReachoutSection />
