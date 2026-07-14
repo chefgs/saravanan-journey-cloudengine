@@ -1,4 +1,9 @@
-export type MilestoneCategory = 'education' | 'career' | 'entrepreneurship' | 'reflection';
+export type MilestoneCategory =
+  | 'education'
+  | 'career'
+  | 'entrepreneurship'
+  | 'global-travel'
+  | 'reflection';
 
 export type GalleryCategory = string;
 

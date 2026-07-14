@@ -35,6 +35,7 @@ export default function InteractiveTimelineSection() {
     { id: 'education', label: 'Engineering Years' },
     { id: 'career', label: 'Software Career & Industry' },
     { id: 'entrepreneurship', label: 'CloudEngine Labs & Self-Employment' },
+    { id: 'global-travel', label: 'Global Travel & HashiConf' },
     { id: 'reflection', label: 'Silver Jubilee 2026' }
   ];
 

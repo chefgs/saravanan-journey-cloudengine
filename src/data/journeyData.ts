@@ -257,6 +257,59 @@ export const INITIAL_JOURNEY_DATA: JourneyContent = {
       ]
     },
     {
+      id: "hashiconf-global-travel-2023-2025",
+      period: "2023-2025",
+      year: 2024,
+      title: "HashiConf Travel: San Francisco & Boston",
+      subtitle: "Global Infrastructure Community & Cloud Learning",
+      description:
+        "Travelled from San Francisco to Boston to learn directly from the HashiCorp community. The journey began with a visit to HashiCorp headquarters in SFO, continued through HashiConf and HUG conversations in Boston in 2024, and returned to Boston in 2025. Each trip brought practical Infrastructure as Code, Terraform, and cloud architecture ideas back to CloudEngine Labs.",
+      location: "San Francisco, CA & Boston, MA, USA",
+      organization: "HashiConf & HashiCorp User Group",
+      category: "global-travel",
+      orderIndex: 8,
+      lessonLearned: "The best global events turn community conversations into practical improvements for clients and teams at home.",
+      gratitudeNote: "Grateful to the HashiCorp community, fellow practitioners, and every conversation that made international learning feel welcoming and useful.",
+      photos: [
+        {
+          id: "hashiconf-timeline-sfo-2023",
+          url: "/gallery/hashicorp-office-visit.jpg",
+          title: "HashiCorp Headquarters",
+          caption: "San Francisco, 2023",
+          story: "The first stop in a multi-year HashiConf travel journey.",
+          year: "2023",
+          category: "Global travel",
+          location: "San Francisco, CA",
+          altText: "Saravanan Gnanaguru at HashiCorp headquarters in San Francisco",
+          orderIndex: 1
+        },
+        {
+          id: "hashiconf-timeline-boston-2024",
+          url: "/gallery/pics3/hashiconf-2024.JPG",
+          title: "HashiConf Boston Summit",
+          caption: "Boston, 2024",
+          story: "Connecting with cloud architects and community builders at HashiConf.",
+          year: "2024",
+          category: "Global travel",
+          location: "Boston, MA",
+          altText: "HashiConf Boston 2024 summit",
+          orderIndex: 2
+        },
+        {
+          id: "hashiconf-timeline-boston-2025",
+          url: "/gallery/pics3/hashiconf-2025.jpg",
+          title: "HashiConf Boston Leadership",
+          caption: "Boston, 2025",
+          story: "Returning to the community with another year of practical learning.",
+          year: "2025",
+          category: "Global travel",
+          location: "Boston, MA",
+          altText: "HashiConf Boston 2025 leadership gathering",
+          orderIndex: 3
+        }
+      ]
+    },
+    {
       id: "gitex-dubai-2026",
       period: "2026",
       year: 2026,
@@ -267,7 +320,7 @@ export const INITIAL_JOURNEY_DATA: JourneyContent = {
       location: "Dubai World Trade Centre & Dubai Harbour, UAE",
       organization: "CloudEngine Labs @ GITEX",
       category: "entrepreneurship",
-      orderIndex: 8,
+      orderIndex: 9,
       lessonLearned: "Innovation accelerates when you step into global arenas with a process-first mindset.",
       gratitudeNote: "Grateful for global peer connections and the courage to build an enterprise practice that travels across borders.",
       photos: [
@@ -308,7 +361,7 @@ export const INITIAL_JOURNEY_DATA: JourneyContent = {
       location: "Coimbatore & Chennai",
       organization: "Alumni Jubilee 2026",
       category: "reflection",
-      orderIndex: 8,
+      orderIndex: 10,
       lessonLearned: "Marks describe one chapter. They do not have to write the entire story.",
       gratitudeNote: "Grateful to every classmate, alumnus, and mentor who shared this 25-year road.",
       photos: [
@@ -1329,19 +1382,6 @@ export const INITIAL_JOURNEY_DATA: JourneyContent = {
       isFeatured: false,
       orderIndex: 155
     },
-    {
-      id: "tr-24-9",
-      url: "/gallery/pics2/family.png",
-      title: "Family Milestone & Support System (2024)",
-      caption: "CloudEngine Labs global consulting missions and family moments.",
-      story: "Independent self-employed consulting footprint across the UK.",
-      year: "2024",
-      category: "Travel 2024-2026",
-      location: "London, UK",
-      altText: "Family Milestone & Support System (2024)",
-      isFeatured: false,
-      orderIndex: 156
-    }
   ],
   lessons: [
     {

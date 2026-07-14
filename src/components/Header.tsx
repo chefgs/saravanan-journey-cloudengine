@@ -30,7 +30,8 @@ export default function Header() {
   const navLinks = [
     { label: 'Story', href: '#reflection', id: 'reflection' },
     { label: '25-Year Timeline', href: '#timeline', id: 'timeline' },
-    { label: 'Archive Gallery', href: '#gallery', id: 'gallery' },
+    { label: 'Photo Gallery', href: '#gallery', id: 'gallery' },
+    { label: 'Speaking', href: '#speaking-events', id: 'speaking-events' },
     { label: 'Philosophies', href: '#philosophies', id: 'philosophies' },
     { label: 'Wheel of Life', href: '#holistic-life', id: 'holistic-life' },
     { label: 'Gratitude', href: '#gratitude', id: 'gratitude' },

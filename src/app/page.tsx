@@ -6,6 +6,7 @@ import HeroSection from '@/components/sections/HeroSection';
 import OpeningReflectionSection from '@/components/sections/OpeningReflectionSection';
 import InteractiveTimelineSection from '@/components/sections/InteractiveTimelineSection';
 import PhotoJourneyGallerySection from '@/components/sections/PhotoJourneyGallerySection';
+import SpeakingEventsGallerySection from '@/components/sections/SpeakingEventsGallerySection';
 import LifePhilosophiesSection from '@/components/sections/LifePhilosophiesSection';
 import HolisticLifeWheelSection from '@/components/sections/HolisticLifeWheelSection';
 import GratitudeSection from '@/components/sections/GratitudeSection';
@@ -32,7 +33,10 @@ export default function Home() {
       {/* 4. Curated Life Photo Archive Gallery */}
       <PhotoJourneyGallerySection />
 
-      {/* 5. Life Philosophies & Lessons Learned */}
+      {/* 5. Dedicated Speaking Events Gallery */}
+      <SpeakingEventsGallerySection />
+
+      {/* 6. Life Philosophies & Lessons Learned */}
       <LifePhilosophiesSection />
 
       {/* 6. Holistic Life Wheel (21DC & TiE Chennai Framework) */}

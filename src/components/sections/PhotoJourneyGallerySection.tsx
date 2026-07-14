@@ -26,7 +26,7 @@ export default function PhotoJourneyGallerySection() {
   const categories: { id: string; label: string }[] = [
     { id: 'travel-collage', label: 'Global Travel Collages (by Year)' },
     { id: 'all', label: 'All Life Archive Photos' },
-    { id: 'Speaking and community events', label: 'Speaking & Keynotes' },
+    { id: 'hashiconf-travel', label: 'Global Travel: SFO & Boston' },
     { id: 'Boston HashiConf & HUG', label: 'Boston HashiConf & HUG' },
     { id: 'GITEX Dubai 2026', label: 'GITEX Dubai 2026' },
     { id: 'Travel 2005', label: '2005 (Wipro Era)' },
@@ -49,11 +49,21 @@ export default function PhotoJourneyGallerySection() {
     { id: 'Travel 2010', title: '2010 — European Consulting Across Paris & France (Eiffel & Montparnasse)', era: '2010' },
     { id: 'Travel 2014-2018', title: '2014–2018 — UK Cloud Governance Leadership (London & Piccadilly)', era: '2014–2018' },
     { id: 'Travel 2019', title: '2019 — Cross-Continental Tech Summits (Istanbul & UK)', era: '2019' },
-    { id: 'Travel 2024-2026', title: '2024–2026 — CloudEngine Labs Founder Global Consulting Era', era: '2024–2026' }
+    { id: 'hashiconf-travel', title: '2023-2025 - HashiConf Travel: San Francisco & Boston', era: '2023-2025' },
+    { id: 'Travel 2024-2026', title: '2024-2026 - CloudEngine Labs Founder Global Consulting Era', era: '2024-2026' }
   ];
 
-  const filteredGallery = gallery.filter(
-    (img) => activeCategory === 'all' || img.category === activeCategory
+  const isHashiConfTravel = (img: GalleryImage) =>
+    img.year >= '2023' &&
+    img.year <= '2025' &&
+    (img.location?.includes('San Francisco') || img.location?.includes('Boston'));
+
+  const filteredGallery = gallery.filter((img) =>
+    activeCategory === 'all'
+      ? true
+      : activeCategory === 'hashiconf-travel'
+        ? isHashiConfTravel(img)
+        : img.category === activeCategory
   );
 
   return (
@@ -111,7 +121,11 @@ export default function PhotoJourneyGallerySection() {
         {activeCategory === 'travel-collage' ? (
           <div className="space-y-14">
             {travelYears.map((yearGroup) => {
-              const yearPhotos = gallery.filter((img) => img.category === yearGroup.id);
+              const yearPhotos = gallery.filter((img) =>
+                yearGroup.id === 'hashiconf-travel'
+                  ? isHashiConfTravel(img)
+                  : img.category === yearGroup.id
+              );
               if (yearPhotos.length === 0) return null;
 
               const previewPhotos = yearPhotos.slice(0, 4);

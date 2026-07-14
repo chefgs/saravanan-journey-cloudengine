@@ -38,6 +38,24 @@ interface JourneyContextType {
 const JourneyContext = createContext<JourneyContextType | undefined>(undefined);
 
 const LOCAL_STORAGE_KEY = 'saravanan_journey_cloudengine_data_v1';
+const RETIRED_GALLERY_IMAGE_IDS = new Set(['tr-24-9']);
+
+function mergeSeededJourneyContent(saved: JourneyContent): JourneyContent {
+  const addMissing = <T extends { id: string }>(savedItems: T[], seededItems: T[]) => [
+    ...savedItems,
+    ...seededItems.filter((seededItem) => !savedItems.some((savedItem) => savedItem.id === seededItem.id))
+  ];
+
+  return {
+    ...INITIAL_JOURNEY_DATA,
+    ...saved,
+    milestones: addMissing(saved.milestones || [], INITIAL_JOURNEY_DATA.milestones),
+    gallery: addMissing(
+      (saved.gallery || []).filter((image) => !RETIRED_GALLERY_IMAGE_IDS.has(image.id)),
+      INITIAL_JOURNEY_DATA.gallery
+    )
+  };
+}
 
 export function JourneyProvider({ children }: { children: React.ReactNode }) {
   const [data, setData] = useState<JourneyContent>(INITIAL_JOURNEY_DATA);
@@ -51,7 +69,9 @@ export function JourneyProvider({ children }: { children: React.ReactNode }) {
       const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
       if (saved) {
         const parsed = JSON.parse(saved);
-        setData(parsed);
+        const mergedData = mergeSeededJourneyContent(parsed);
+        setData(mergedData);
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(mergedData));
       }
     } catch (e) {
       console.error('Failed to load local journey data:', e);
