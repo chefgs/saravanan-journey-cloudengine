@@ -67,12 +67,12 @@ export default function Header() {
           </a>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1.5 bg-navy-card/60 border border-slate-700/50 rounded-full px-3 py-1.5 backdrop-blur-sm">
+          <nav className="hidden xl:flex shrink-0 items-center gap-1.5 bg-navy-card/60 border border-slate-700/50 rounded-full px-3 py-1.5 backdrop-blur-sm">
             {navLinks.map((link) => (
               <a
                 key={link.id}
                 href={link.href}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all ${
+                className={`shrink-0 whitespace-nowrap px-3.5 py-1.5 rounded-full text-xs font-medium transition-all ${
                   activeSection === link.id
                     ? 'bg-cyan-accent text-navy-deep font-semibold shadow-sm'
                     : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
@@ -97,7 +97,7 @@ export default function Header() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-xl bg-slate-800/80 text-slate-300 hover:text-white"
+              className="xl:hidden p-2 rounded-xl bg-slate-800/80 text-slate-300 hover:text-white"
               aria-label="Toggle Menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -107,7 +107,7 @@ export default function Header() {
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden border-t border-slate-800 bg-[#0A1128]/95 backdrop-blur-xl px-6 py-5 mt-3 space-y-3 shadow-2xl">
+          <div className="xl:hidden border-t border-slate-800 bg-[#0A1128]/95 backdrop-blur-xl px-6 py-5 mt-3 space-y-3 shadow-2xl">
             <div className="flex flex-wrap gap-2 pb-3 border-b border-slate-800">
               <button
                 onClick={() => {
