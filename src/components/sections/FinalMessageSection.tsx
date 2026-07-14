@@ -62,7 +62,7 @@ export default function FinalMessageSection() {
             <div className="pt-3 pb-1.5 px-2 text-center">
               <div className="inline-flex items-center justify-center gap-1.5 text-amber-400 text-xs font-semibold uppercase tracking-wider mb-1">
                 <Heart className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                <span>My Anchor & Heart</span>
+                <span>My Anchor</span>
               </div>
               <p className="text-xs text-slate-300 leading-relaxed">
                 With my family — the daily strength and purpose behind every milestone of this 25-year journey.
