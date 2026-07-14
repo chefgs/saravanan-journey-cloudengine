@@ -114,8 +114,7 @@ export default function PhotoJourneyGallerySection() {
               const yearPhotos = gallery.filter((img) => img.category === yearGroup.id);
               if (yearPhotos.length === 0) return null;
 
-              const featuredPhoto = yearPhotos[0];
-              const companionPhotos = yearPhotos.slice(1, 5); // Up to 4 supporting photos in the collage preview
+              const previewPhotos = yearPhotos.slice(0, 4);
 
               return (
                 <div
@@ -140,79 +139,31 @@ export default function PhotoJourneyGallerySection() {
                     </button>
                   </div>
 
-                  {/* Bento Collage Grid — Perfectly side-by-side when exactly 2 photos */}
-                  {yearPhotos.length === 2 ? (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      {yearPhotos.map((photo) => (
-                        <div
-                          key={photo.id}
-                          onClick={() => setLightboxImage(photo)}
-                          className="relative rounded-2xl overflow-hidden aspect-[16/10] bg-slate-900 border border-slate-700/80 cursor-pointer group shadow-lg"
-                        >
-                          <LazyImage
-                            src={photo.url}
-                            alt={photo.altText || photo.title}
-                            containerClassName="w-full h-full"
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                          />
-                          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-5">
-                            <span className="text-xs font-bold text-amber-400 block mb-1">
-                              {photo.year} Milestone
-                            </span>
-                            <h4 className="text-base sm:text-lg font-serif font-bold text-white">
-                              {photo.title}
-                            </h4>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-                      {/* Main Hero Shot in Collage */}
+                  {/* Consistent year layout: every era follows the 2005 two-column archive pattern */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                    {previewPhotos.map((photo) => (
                       <div
-                        onClick={() => setLightboxImage(featuredPhoto)}
-                        className="lg:col-span-2 relative rounded-2xl overflow-hidden aspect-[16/10] bg-slate-900 border border-slate-700/80 cursor-pointer group shadow-lg"
+                        key={photo.id}
+                        onClick={() => setLightboxImage(photo)}
+                        className="relative rounded-2xl overflow-hidden aspect-[16/10] bg-slate-900 border border-slate-700/80 cursor-pointer group shadow-lg"
                       >
                         <LazyImage
-                          src={featuredPhoto.url}
-                          alt={featuredPhoto.altText || featuredPhoto.title}
+                          src={photo.url}
+                          alt={photo.altText || photo.title}
                           containerClassName="w-full h-full"
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                         />
-                        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4">
-                          <span className="text-xs font-bold text-amber-400 block">
-                            Featured Memory • {featuredPhoto.year}
+                        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-4 sm:p-5">
+                          <span className="text-xs font-bold text-amber-400 block mb-1">
+                            {photo.year} Milestone
                           </span>
-                          <h4 className="text-base font-serif font-bold text-white">
-                            {featuredPhoto.title}
+                          <h4 className="text-base sm:text-lg font-serif font-bold text-white">
+                            {photo.title}
                           </h4>
                         </div>
                       </div>
-
-                      {/* Side Companion Thumbnails Grid */}
-                      <div className="grid grid-cols-2 lg:grid-cols-1 gap-4">
-                        {companionPhotos.map((compPhoto) => (
-                          <div
-                            key={compPhoto.id}
-                            onClick={() => setLightboxImage(compPhoto)}
-                            className="relative rounded-2xl overflow-hidden aspect-[16/10] lg:aspect-auto lg:h-full bg-slate-900 border border-slate-700/80 cursor-pointer group shadow-md"
-                          >
-                            <LazyImage
-                              src={compPhoto.url}
-                              alt={compPhoto.altText || compPhoto.title}
-                              containerClassName="w-full h-full"
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                            />
-                            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent p-3">
-                              <h5 className="text-xs font-serif font-bold text-white line-clamp-1">
-                                {compPhoto.title}
-                              </h5>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+                    ))}
+                  </div>
                 </div>
               );
             })}

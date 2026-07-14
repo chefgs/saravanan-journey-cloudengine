@@ -61,3 +61,23 @@ body {
     page-break-before: always;
   }
 }
+@keyframes principles-panel-enter {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.principles-panel-enter {
+  animation: principles-panel-enter 240ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .principles-panel-enter {
+    animation: none;
+  }
+}

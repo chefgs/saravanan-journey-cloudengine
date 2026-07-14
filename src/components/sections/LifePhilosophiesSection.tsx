@@ -1,18 +1,16 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
+  ArrowLeft,
+  ArrowRight,
   Compass,
   ShieldCheck,
   Heart,
   Sparkles,
   Flame,
-  Activity,
-  Clock,
-  Target,
   Quote,
-  CheckCircle2,
-  ArrowRight
+  CheckCircle2
 } from 'lucide-react';
 
 interface PhilosophyItem {
@@ -24,6 +22,38 @@ interface PhilosophyItem {
   journeyLink: string;
   milestoneTag: string;
 }
+
+type PillarId = 'pillar1' | 'pillar2' | 'pillar3';
+
+const PILLARS = [
+  {
+    id: 'pillar1' as const,
+    step: '01',
+    title: 'Inner Strength & Survival',
+    range: '01–05',
+    description: 'The inner beliefs that turned early limitations and uncertainty into courage, capability, and endurance.',
+    icon: ShieldCheck,
+    accent: 'blue'
+  },
+  {
+    id: 'pillar2' as const,
+    step: '02',
+    title: 'Freedom & Purpose',
+    range: '06–10',
+    description: 'The choices and disciplines that created time freedom, meaningful work, and inner alignment.',
+    icon: Flame,
+    accent: 'amber'
+  },
+  {
+    id: 'pillar3' as const,
+    step: '03',
+    title: 'Cellular Health & Gratitude',
+    range: '11–15',
+    description: 'The practices that protect mind and body while grounding progress in balance and gratitude.',
+    icon: Heart,
+    accent: 'emerald'
+  }
+];
 
 const SIGNATURE_CREED = [
   {
@@ -202,8 +232,57 @@ const PILLAR_3_PHILOSOPHIES: PhilosophyItem[] = [
   }
 ];
 
+const PILLAR_ITEMS: Record<PillarId, PhilosophyItem[]> = {
+  pillar1: PILLAR_1_PHILOSOPHIES,
+  pillar2: PILLAR_2_PHILOSOPHIES,
+  pillar3: PILLAR_3_PHILOSOPHIES
+};
+
 export default function LifePhilosophiesSection() {
-  const [activeTab, setActiveTab] = useState<'pillar1' | 'pillar2' | 'pillar3'>('pillar1');
+  const [activeTab, setActiveTab] = useState<PillarId>('pillar1');
+  const tabRefs = useRef<Record<PillarId, HTMLButtonElement | null>>({
+    pillar1: null,
+    pillar2: null,
+    pillar3: null
+  });
+  const hasMounted = useRef(false);
+  const activeIndex = PILLARS.findIndex((pillar) => pillar.id === activeTab);
+  const activePillar = PILLARS[activeIndex];
+  const activeItems = PILLAR_ITEMS[activeTab];
+
+  useEffect(() => {
+    if (!hasMounted.current) {
+      hasMounted.current = true;
+      return;
+    }
+
+    tabRefs.current[activeTab]?.scrollIntoView({
+      behavior: 'auto',
+      block: 'nearest',
+      inline: 'center'
+    });
+  }, [activeTab]);
+
+  const selectTab = (index: number, moveFocus = false) => {
+    const nextPillar = PILLARS[index];
+    if (!nextPillar) return;
+
+    setActiveTab(nextPillar.id);
+    if (moveFocus) tabRefs.current[nextPillar.id]?.focus();
+  };
+
+  const handleTabKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+    let nextIndex = activeIndex;
+
+    if (event.key === 'ArrowRight') nextIndex = (activeIndex + 1) % PILLARS.length;
+    else if (event.key === 'ArrowLeft') nextIndex = (activeIndex - 1 + PILLARS.length) % PILLARS.length;
+    else if (event.key === 'Home') nextIndex = 0;
+    else if (event.key === 'End') nextIndex = PILLARS.length - 1;
+    else return;
+
+    event.preventDefault();
+    selectTab(nextIndex, true);
+  };
 
   return (
     <section
@@ -269,68 +348,123 @@ export default function LifePhilosophiesSection() {
 
         {/* INTERACTIVE PILLAR SWITCHER FOR ALL 15 PHILOSOPHIES */}
         <div className="mb-12">
-          <div className="text-center mb-8">
+          <div className="text-center mb-8 sm:mb-10">
             <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white">
               15 Core Principles Linked to My Journey
             </h3>
-            <p className="text-sm text-slate-300 mt-2">
-              Select any of the <span className="text-cyan-accent font-semibold">3 core themes</span> below to explore the beliefs and habits behind every milestone:
+            <p className="text-sm sm:text-base text-slate-300 mt-3 max-w-2xl mx-auto text-pretty">
+              Explore all <span className="text-cyan-accent font-semibold">15 principles across 3 themes</span>. Choose a theme below, then follow the journey from strength to gratitude.
             </p>
           </div>
 
-          {/* Pillar Tabs (3 Highly Visible Interactive Buttons) */}
-          <div className="flex flex-wrap items-center justify-center gap-4 mb-10">
-            <button
-              onClick={() => setActiveTab('pillar1')}
-              className={`px-6 py-3.5 rounded-2xl text-xs sm:text-sm font-bold transition-all duration-300 flex items-center gap-2.5 shadow-lg ${
-                activeTab === 'pillar1'
-                  ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-blue-500/30 scale-105 ring-2 ring-white'
-                  : 'bg-[#141E3A] text-blue-200 border-2 border-blue-500/50 hover:border-blue-400 hover:bg-blue-600/20 hover:text-white hover:scale-[1.02]'
-              }`}
-            >
-              <ShieldCheck className="w-4 h-4 shrink-0" />
-              <span>I. Inner Strength & Survival (01–05)</span>
-            </button>
+          {/* Connected journey tabs */}
+          <div className="mb-8 sm:mb-10 rounded-[1.75rem] border border-slate-700/80 bg-[#0C1530]/90 p-3 sm:p-4 shadow-2xl shadow-navy-deep/40">
+            <div className="flex items-center justify-between gap-4 px-1 pb-3 sm:px-2 sm:pb-4">
+              <p className="text-xs sm:text-sm font-semibold text-white">Choose a theme to explore</p>
+              <p className="shrink-0 font-mono text-[11px] sm:text-xs font-bold text-cyan-accent tabular-nums" aria-live="polite">
+                Theme {activeIndex + 1} of {PILLARS.length}
+              </p>
+            </div>
 
-            <button
-              onClick={() => setActiveTab('pillar2')}
-              className={`px-6 py-3.5 rounded-2xl text-xs sm:text-sm font-bold transition-all duration-300 flex items-center gap-2.5 shadow-lg ${
-                activeTab === 'pillar2'
-                  ? 'bg-gradient-to-r from-amber-400 to-amber-300 text-navy-deep shadow-amber-400/30 scale-105 ring-2 ring-white'
-                  : 'bg-[#291F13] text-amber-300 border-2 border-amber-400/50 hover:border-amber-300 hover:bg-amber-400/20 hover:text-white hover:scale-[1.02]'
-              }`}
-            >
-              <Flame className="w-4 h-4 shrink-0" />
-              <span>II. Freedom & Purpose (06–10)</span>
-            </button>
+            <div className="relative">
+              <div className="absolute left-[16.67%] right-[16.67%] top-7 hidden h-px bg-slate-700 md:block" aria-hidden="true">
+                <div
+                  className="h-full bg-cyan-accent transition-transform duration-300 motion-reduce:transition-none origin-left"
+                  style={{ transform: `scaleX(${activeIndex / (PILLARS.length - 1)})` }}
+                />
+              </div>
 
-            <button
-              onClick={() => setActiveTab('pillar3')}
-              className={`px-6 py-3.5 rounded-2xl text-xs sm:text-sm font-bold transition-all duration-300 flex items-center gap-2.5 shadow-lg ${
-                activeTab === 'pillar3'
-                  ? 'bg-gradient-to-r from-emerald-400 to-emerald-300 text-navy-deep shadow-emerald-400/30 scale-105 ring-2 ring-white'
-                  : 'bg-[#102B27] text-emerald-300 border-2 border-emerald-400/50 hover:border-emerald-300 hover:bg-emerald-400/20 hover:text-white hover:scale-[1.02]'
-              }`}
-            >
-              <Heart className="w-4 h-4 shrink-0" />
-              <span>III. Cellular Health & Gratitude (11–15)</span>
-            </button>
+              <div
+                role="tablist"
+                aria-label="Core principle themes"
+                className="flex snap-x snap-mandatory gap-3 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-3 md:overflow-visible"
+              >
+                {PILLARS.map((pillar, index) => {
+                  const Icon = pillar.icon;
+                  const isActive = activeTab === pillar.id;
+                  const activeStyles = pillar.accent === 'blue'
+                    ? 'border-blue-400/80 bg-blue-500/15 shadow-blue-950/50'
+                    : pillar.accent === 'amber'
+                      ? 'border-amber-300/80 bg-amber-400/10 shadow-amber-950/40'
+                      : 'border-emerald-300/80 bg-emerald-400/10 shadow-emerald-950/40';
+                  const iconStyles = pillar.accent === 'blue'
+                    ? 'bg-blue-500 text-white'
+                    : pillar.accent === 'amber'
+                      ? 'bg-amber-300 text-navy-deep'
+                      : 'bg-emerald-300 text-navy-deep';
+
+                  return (
+                    <button
+                      key={pillar.id}
+                      ref={(element) => { tabRefs.current[pillar.id] = element; }}
+                      id={`principles-tab-${pillar.id}`}
+                      type="button"
+                      role="tab"
+                      aria-selected={isActive}
+                      aria-controls={`principles-panel-${pillar.id}`}
+                      tabIndex={isActive ? 0 : -1}
+                      onClick={() => selectTab(index)}
+                      onKeyDown={handleTabKeyDown}
+                      className={`relative z-10 min-h-28 w-[82%] shrink-0 snap-center rounded-2xl border p-4 text-left shadow-lg transition-[border-color,background-color,box-shadow,transform] duration-200 active:scale-[0.99] motion-reduce:transition-none md:w-auto ${
+                        isActive
+                          ? activeStyles
+                          : 'border-slate-700 bg-[#111A35] hover:border-slate-500 hover:bg-[#15203F]'
+                      } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-accent focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1530]`}
+                    >
+                      <span className="flex items-start gap-3">
+                        <span className={`flex size-11 shrink-0 items-center justify-center rounded-xl transition-colors duration-200 motion-reduce:transition-none ${isActive ? iconStyles : 'bg-slate-800 text-slate-300'}`}>
+                          <Icon className="size-5" aria-hidden="true" />
+                        </span>
+                        <span className="min-w-0 flex-1">
+                          <span className="flex items-center justify-between gap-2 text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">
+                            <span>Theme {pillar.step}</span>
+                            <span className="font-mono tabular-nums">{pillar.range}</span>
+                          </span>
+                          <span className="mt-2 block text-sm sm:text-base font-semibold leading-snug text-white">
+                            {pillar.title}
+                          </span>
+                          <span className={`mt-2 inline-flex text-[11px] font-semibold ${isActive ? 'text-cyan-accent' : 'text-slate-400'}`}>
+                            5 principles {isActive && '• Viewing now'}
+                          </span>
+                        </span>
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
           </div>
 
-          {/* Active Pillar Philosophy Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {(activeTab === 'pillar1'
-              ? PILLAR_1_PHILOSOPHIES
-              : activeTab === 'pillar2'
-              ? PILLAR_2_PHILOSOPHIES
-              : PILLAR_3_PHILOSOPHIES
-            ).map((phil) => (
+          <div
+            key={activeTab}
+            id={`principles-panel-${activeTab}`}
+            role="tabpanel"
+            aria-labelledby={`principles-tab-${activeTab}`}
+            tabIndex={0}
+            className="principles-panel-enter focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-accent focus-visible:ring-offset-4 focus-visible:ring-offset-[#0A1128]"
+          >
+            <div className="mb-6 flex flex-col gap-4 rounded-2xl border-l-4 border-cyan-accent bg-[#111A35]/80 px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+              <div>
+                <p className="font-mono text-xs font-bold uppercase tracking-[0.16em] text-cyan-accent tabular-nums">
+                  Theme {activePillar.step} • Principles {activePillar.range}
+                </p>
+                <h4 className="mt-2 text-xl sm:text-2xl font-serif font-bold text-white">{activePillar.title}</h4>
+                <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-300">{activePillar.description}</p>
+              </div>
+              <span className="w-fit shrink-0 rounded-lg border border-slate-700 bg-slate-900/60 px-3 py-2 font-mono text-xs font-bold text-slate-200 tabular-nums">
+                5 of 15
+              </span>
+            </div>
+
+            {/* Active Pillar Philosophy Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+            {activeItems.map((phil, index) => (
               <div
                 key={phil.id}
-                className="rounded-3xl p-6 sm:p-8 bg-navy-card/90 border border-slate-800 hover:border-cyan-accent/50 transition-all duration-300 shadow-lg flex flex-col justify-between"
+                className={`rounded-2xl sm:rounded-3xl p-5 sm:p-8 bg-navy-card/90 border border-slate-800 hover:border-cyan-accent/50 transition-colors duration-300 motion-reduce:transition-none shadow-lg flex flex-col justify-between ${index === activeItems.length - 1 ? 'md:col-span-2' : ''}`}
               >
                 <div>
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
                     <span className="text-xs font-mono font-bold text-cyan-accent px-2.5 py-1 rounded-lg bg-cyan-accent/10 border border-cyan-accent/30">
                       Principle #{phil.number}
                     </span>
@@ -361,6 +495,31 @@ export default function LifePhilosophiesSection() {
                 </div>
               </div>
             ))}
+            </div>
+
+            <nav aria-label="Principle theme navigation" className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
+              {activeIndex > 0 ? (
+                <button
+                  type="button"
+                  onClick={() => selectTab(activeIndex - 1)}
+                  className="group flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-slate-700 bg-[#111A35] px-4 py-3 text-sm font-semibold text-white transition-colors hover:border-cyan-accent/60 hover:bg-[#15203F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-accent active:scale-[0.99] motion-reduce:transition-none sm:justify-start"
+                >
+                  <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-0.5 motion-reduce:transition-none" aria-hidden="true" />
+                  Previous: {PILLARS[activeIndex - 1].title}
+                </button>
+              ) : <span className="hidden sm:block" aria-hidden="true" />}
+
+              {activeIndex < PILLARS.length - 1 && (
+                <button
+                  type="button"
+                  onClick={() => selectTab(activeIndex + 1)}
+                  className="group flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-cyan-accent px-4 py-3 text-sm font-bold text-navy-deep transition-[background-color,transform] hover:bg-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A1128] active:scale-[0.99] motion-reduce:transition-none sm:col-start-2 sm:justify-end"
+                >
+                  Next: {PILLARS[activeIndex + 1].title}
+                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5 motion-reduce:transition-none" aria-hidden="true" />
+                </button>
+              )}
+            </nav>
           </div>
         </div>
 
