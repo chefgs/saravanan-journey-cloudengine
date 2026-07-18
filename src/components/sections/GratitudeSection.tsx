@@ -59,7 +59,7 @@ export default function GratitudeSection() {
                                 href={person.websiteUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="hover:underline"
+                                className="text-amber-300 hover:text-amber-200 hover:underline transition-colors"
                               >
                                 {person.websiteLabel}
                               </a>
