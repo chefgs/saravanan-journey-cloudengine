@@ -57,6 +57,8 @@ export interface WheelOfLifeDimension {
 export interface GratitudePerson {
   name: string;
   roleOrRelation: string;
+  websiteUrl?: string;
+  websiteLabel?: string;
   message: string;
   highlight?: boolean;
 }

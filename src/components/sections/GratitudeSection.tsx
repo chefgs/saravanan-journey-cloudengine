@@ -53,7 +53,17 @@ export default function GratitudeSection() {
                             {person.name}
                           </h4>
                           <span className="block text-xs font-semibold text-cyan-accent mt-0.5">
-                            {person.roleOrRelation}
+                            {person.roleOrRelation}{' '}
+                            {person.websiteUrl && person.websiteLabel && (
+                              <a
+                                href={person.websiteUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:underline"
+                              >
+                                {person.websiteLabel}
+                              </a>
+                            )}
                           </span>
                         </div>
                         {person.highlight && (

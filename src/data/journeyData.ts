@@ -1534,7 +1534,7 @@ export const INITIAL_JOURNEY_DATA: JourneyContent = {
           highlight: true
         },
         {
-          name: "Tamilpreneur & DNA Community",
+          name: "Tamilpreneur, The Founder Circle & DNA Community",
           roleOrRelation: "Founder Communities",
           message: "For fostering vibrant founder brotherhood, knowledge sharing, and creating a community where founders continuously uplift one another.",
           highlight: true
@@ -1577,7 +1577,9 @@ export const INITIAL_JOURNEY_DATA: JourneyContent = {
         },
         {
           name: "Malini",
-          roleOrRelation: "Life Partner & Founder of AJ Academy",
+          roleOrRelation: "Life Partner & Founder of",
+          websiteUrl: "https://aj-academy.in",
+          websiteLabel: "AJ Academy",
           message: "For standing by every bold decision, sharing the entrepreneurship journey, and showing what dedication to education looks like.",
           highlight: true
         },
